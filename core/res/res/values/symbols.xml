@@ -234,6 +234,7 @@
   <java-symbol type="attr" name="isLightTheme"/>
 
   <java-symbol type="bool" name="action_bar_embed_tabs" />
+  <java-symbol type="bool" name="config_enableScreenrecordChord" />
   <java-symbol type="bool" name="action_bar_expanded_action_views_exclusive" />
   <java-symbol type="bool" name="config_avoidGfxAccel" />
   <java-symbol type="bool" name="config_bluetooth_address_validation" />
