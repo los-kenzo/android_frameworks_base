@@ -21462,9 +21462,61 @@ Slog.v(TAG, ":: stepped forward, applying functor at tag " + parser.getName());
             }
         }
 
+    @Override
+    public String getNameForUid(int uid) {
+        // reader
+        synchronized (mPackages) {
+            Object obj = mSettings.getUserIdLPr(UserHandle.getAppId(uid));
+            if (obj instanceof SharedUserSetting) {
+                final SharedUserSetting sus = (SharedUserSetting) obj;
+                return sus.name + ":" + sus.userId;
+            } else if (obj instanceof PackageSetting) {
+                final PackageSetting ps = (PackageSetting) obj;
+                return ps.name;
+            }
+        }
+        return null;
+    }
+
         @Override
-        public String getNameForUid(int uid) {
-            return PackageManagerService.this.getNameForUid(uid);
+        public List<PackageInfo> getOverlayPackages(int userId) {
+            final ArrayList<PackageInfo> overlayPackages = new ArrayList<PackageInfo>();
+            synchronized (mPackages) {
+                for (PackageParser.Package p : mPackages.values()) {
+                    if (p.mOverlayTarget != null) {
+                        PackageInfo pkg = generatePackageInfo((PackageSetting)p.mExtras, 0, userId);
+                        if (pkg != null) {
+                            overlayPackages.add(pkg);
+                        }
+                    }
+                }
+            }
+            return overlayPackages;
+        }
+
+        @Override
+        public List<String> getTargetPackageNames(int userId) {
+            List<String> targetPackages = new ArrayList<>();
+            synchronized (mPackages) {
+                for (PackageParser.Package p : mPackages.values()) {
+                    if (p.mOverlayTarget == null) {
+                        targetPackages.add(p.packageName);
+                    }
+                }
+            }
+            return targetPackages;
+        }
+
+        @Override
+        public void setResourceDirs(int userId, String packageName, String[] resourceDirs) {
+            // TODO: uncomment when we integrate OMS properly
+            // synchronized (mPackages) {
+            //     PackageSetting ps = mSettings.mPackages.get(packageName);
+            //     if (ps == null) {
+            //         return;
+            //     }
+            //     ps.setResourceDirs(resourceDirs, userId);
+            // }
         }
     }
 
