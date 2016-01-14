@@ -3771,6 +3771,7 @@ public final class Settings {
          *
          * @hide
          */
+	public static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
         public static final Set<String> PUBLIC_SETTINGS = new ArraySet<>();
         static {
             PUBLIC_SETTINGS.add(END_BUTTON_BEHAVIOR);
