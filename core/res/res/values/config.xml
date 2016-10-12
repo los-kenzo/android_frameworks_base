@@ -106,6 +106,9 @@
          is disableable for products for which it is irrelevant. -->
     <bool name="config_useVolumeKeySounds">true</bool>
 
+    <!-- Quick settings tiles columns and rows config -->
+    <integer name="config_qs_num_rows_landscape_default">2</integer>
+
     <!-- The attenuation in dB applied to the sound effects played
          through AudioManager.playSoundEffect() when no volume is specified. -->
     <integer name="config_soundEffectVolumeDb">-6</integer>

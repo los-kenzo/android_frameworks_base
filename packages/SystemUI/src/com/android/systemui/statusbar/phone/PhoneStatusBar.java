@@ -486,6 +486,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(CMSettings.Global.getUriFor(
                     CMSettings.Global.DEV_FORCE_SHOW_NAVBAR), false, this, UserHandle.USER_ALL);
+           resolver.registerContentObserver(Settings.Secure.getUriFor(
+                   Settings.Secure.QS_ROWS_PORTRAIT),
+                   false, this, UserHandle.USER_ALL);
+           resolver.registerContentObserver(Settings.Secure.getUriFor(
+                   Settings.Secure.QS_ROWS_LANDSCAPE),
+                   false, this, UserHandle.USER_ALL);
+           resolver.registerContentObserver(Settings.Secure.getUriFor(
+                   Settings.Secure.QS_COLUMNS),
+                   false, this, UserHandle.USER_ALL);
 
             CurrentUserTracker userTracker = new CurrentUserTracker(mContext) {
                 @Override
@@ -803,6 +812,12 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         addNavigationBar();
 
+        TunerService.get(mContext).addTunable(this,
+                SCREEN_BRIGHTNESS_MODE,
+                NAVBAR_LEFT_IN_LANDSCAPE,
+                STATUS_BAR_BRIGHTNESS_CONTROL,
+                LOCKSCREEN_MEDIA_METADATA);
+
         // Developer options - Force Navigation bar
         try {
             boolean needsNav = mWindowManagerService.needsNavigationBar();
@@ -813,12 +828,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         } catch (RemoteException ex) {
             // no window manager? good luck with that
         }
-
-        TunerService.get(mContext).addTunable(this,
-                SCREEN_BRIGHTNESS_MODE,
-                NAVBAR_LEFT_IN_LANDSCAPE,
-                STATUS_BAR_BRIGHTNESS_CONTROL,
-                LOCKSCREEN_MEDIA_METADATA);
 
         // Lastly, call to the icon policy to install/update all the icons.
         mIconPolicy = new PhoneStatusBarPolicy(mContext, mIconController, mCastController,
