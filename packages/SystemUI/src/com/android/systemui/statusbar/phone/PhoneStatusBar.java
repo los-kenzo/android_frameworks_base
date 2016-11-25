@@ -488,6 +488,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(CMSettings.Global.getUriFor(
                     CMSettings.Global.DEV_FORCE_SHOW_NAVBAR), false, this, UserHandle.USER_ALL);
+           resolver.registerContentObserver(Settings.System.getUriFor(
+                  Settings.System.QS_ROWS_PORTRAIT),
+                  false, this, UserHandle.USER_ALL);
+           resolver.registerContentObserver(Settings.System.getUriFor(
+                  Settings.System.QS_ROWS_LANDSCAPE),
+                  false, this, UserHandle.USER_ALL);
+		updateSettings();
 
             CurrentUserTracker userTracker = new CurrentUserTracker(mContext) {
                 @Override
@@ -502,6 +509,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         public void onChange(boolean selfChange) {
             super.onChange(selfChange);
             update();
+		if (uri.equals(Settings.System.getUriFor(
+                     Settings.System.QS_ROWS_PORTRAIT))
+                     || uri.equals(Settings.System.getUriFor(
+                     Settings.System.QS_ROWS_LANDSCAPE))) {
+                     updateResources();
+              }
+              updateSettings();
         }
 
         private void update() {
