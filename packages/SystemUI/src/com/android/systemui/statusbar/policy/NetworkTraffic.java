@@ -57,6 +57,7 @@ public class NetworkTraffic extends TextView {
     private int mTextSizeSingle;
     private int mTextSizeMulti;
     private boolean mAutoHide;
+    private boolean mHideArrow;
     private int mAutoHideThreshold;
     private int mDarkModeBackgroundColor;
     private int mDarkModeFillColor;
@@ -187,6 +188,9 @@ public class NetworkTraffic extends TextView {
             resolver.registerContentObserver(
                     Secure.getUriFor(Secure.NETWORK_TRAFFIC_AUTOHIDE),
                     false, this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(
+                    Secure.getUriFor(Secure.NETWORK_TRAFFIC_HIDEARROW),
+	            false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(
                     Secure.getUriFor(Secure.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD),
                     false, this, UserHandle.USER_ALL);
@@ -262,6 +266,8 @@ public class NetworkTraffic extends TextView {
                 0, UserHandle.USER_CURRENT);
         mAutoHide = Secure.getIntForUser(resolver, Secure.NETWORK_TRAFFIC_AUTOHIDE,
                 0, UserHandle.USER_CURRENT) == 1;
+        mHideArrow = Secure.getIntForUser(resolver, Secure.NETWORK_TRAFFIC_HIDEARROW,
+		0, UserHandle.USER_CURRENT) == 1;
         mAutoHideThreshold = Secure.getIntForUser(resolver,
                 Secure.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 10, UserHandle.USER_CURRENT);
 
@@ -291,6 +297,7 @@ public class NetworkTraffic extends TextView {
 
     private void updateTrafficDrawable() {
         final int drawableResId;
+	if (!mHideArrow) {
         if (mMode == MODE_UPSTREAM_AND_DOWNSTREAM) {
             drawableResId = R.drawable.stat_sys_network_traffic_updown;
         } else if (mMode == MODE_UPSTREAM_ONLY) {
@@ -298,6 +305,10 @@ public class NetworkTraffic extends TextView {
         } else if (mMode == MODE_DOWNSTREAM_ONLY) {
             drawableResId = R.drawable.stat_sys_network_traffic_down;
         } else {
+	    drawableResId = 0;		
+	}
+	
+	} else {
             drawableResId = 0;
         }
         mDrawable = drawableResId != 0 ? getResources().getDrawable(drawableResId) : null;
