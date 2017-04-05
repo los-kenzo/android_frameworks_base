@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="2.5dp"
         android:layout_marginEnd="2.5dp"
-        android:src="@drawable/volte"
+        android:src="@drawable/stat_sys_volte"
         android:visibility="gone"
         />
     <LinearLayout
