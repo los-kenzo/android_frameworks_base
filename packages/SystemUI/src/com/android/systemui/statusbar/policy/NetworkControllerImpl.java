@@ -892,6 +892,6 @@ public class NetworkControllerImpl extends BroadcastReceiver
      */
     public boolean isAdvancedDataTileEnabled() {
         return Settings.Secure.getIntForUser(mContext.getContentResolver(),
-                Settings.Secure.QS_DATA_ADVANCED, 0, ActivityManager.getCurrentUser()) == 1;
+                "qs_data_advanced", 0, ActivityManager.getCurrentUser()) == 1;
     }
 }
