@@ -34,4 +34,7 @@
 
     <!-- Whether to enable softap extention feature -->
     <bool name="config_softap_extention">true</bool>
+
+    <!-- Whether to enable screenrecord extention feature -->
+    <bool name="config_enableScreenrecordChord">true</bool>
 </resources>
