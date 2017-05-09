@@ -5671,6 +5671,12 @@ public final class Settings {
          *
          * @hide
          */
+
+         /** Unlock keystore with fingerprint after reboot
+         * @hide
+         */
+        public static final String FP_UNLOCK_KEYSTORE = "fp_unlock_keystore";
+
         public static final String TTS_DEFAULT_LOCALE = "tts_default_locale";
 
         /**
