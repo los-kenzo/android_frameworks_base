@@ -1772,6 +1772,11 @@ public final class Settings {
     public static final class System extends NameValueTable {
         private static final float DEFAULT_FONT_SCALE = 1.0f;
 
+         /** Unlock keystore with fingerprint after reboot
+         * @hide
+         */
+        public static final String FP_UNLOCK_KEYSTORE = "fp_unlock_keystore";
+
         /** @hide */
         public static interface Validator {
             public boolean validate(String value);
@@ -5671,11 +5676,6 @@ public final class Settings {
          *
          * @hide
          */
-
-         /** Unlock keystore with fingerprint after reboot
-         * @hide
-         */
-        public static final String FP_UNLOCK_KEYSTORE = "fp_unlock_keystore";
 
         public static final String TTS_DEFAULT_LOCALE = "tts_default_locale";
 

@@ -32,5 +32,5 @@
     <dimen name="navbar_single_hand_mode_vertical_threshhold">48dp</dimen>
 
     <dimen name="net_traffic_single_text_size">12dp</dimen>
-    <dimen name="net_traffic_multi_text_size">7dp</dimen>
+    <dimen name="net_traffic_multi_text_size">6dp</dimen>
 </resources>
