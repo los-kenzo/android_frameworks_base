@@ -488,6 +488,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(CMSettings.Global.getUriFor(
                     CMSettings.Global.DEV_FORCE_SHOW_NAVBAR), false, this, UserHandle.USER_ALL);
+	resolver.registerContentObserver(Settings.System.getUriFor(
+                  Settings.System.QS_LAYOUT_COLUMNS),
+		  false, this, UserHandle.USER_ALL);
            resolver.registerContentObserver(Settings.System.getUriFor(
                   Settings.System.QS_ROWS_PORTRAIT),
                   false, this, UserHandle.USER_ALL);
@@ -506,16 +509,17 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }
 
         @Override
-        public void onChange(boolean selfChange) {
-            super.onChange(selfChange);
+        public void onChange(boolean selfChange, Uri uri) {
+            super.onChange(selfChange, uri);
             update();
 		if (uri.equals(Settings.System.getUriFor(
                      Settings.System.QS_ROWS_PORTRAIT))
                      || uri.equals(Settings.System.getUriFor(
                      Settings.System.QS_ROWS_LANDSCAPE))) {
-                     updateResources();
+			updateResources();
               }
               updateSettings();
+	      updateResources();
         }
 
         private void update() {
@@ -528,8 +532,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 removeNavigationBar();
             }
         }
-	updatesettings();
-    }
+}
 
          public void updateSettings() {
               ContentResolver resolver = mContext.getContentResolver();
