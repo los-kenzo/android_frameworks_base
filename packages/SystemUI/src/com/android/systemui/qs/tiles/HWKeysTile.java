@@ -24,6 +24,9 @@ import com.android.systemui.R;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
+import cyanogenmod.hardware.CMHardwareManager;
+import cyanogenmod.providers.CMSettings;
+
 /** Quick settings tile: HWKeys Actions **/
 public class HWKeysTile extends QSTile<QSTile.BooleanState> {
 
@@ -63,21 +66,23 @@ public class HWKeysTile extends QSTile<QSTile.BooleanState> {
 
     @Override
     protected void handleLongClick() {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setClassName("com.android.settings",
-            "com.android.settings.Settings$ButtonSettingsActivity");
-        mHost.startActivityDismissingKeyguard(intent);
+
     }
 
     private void setEnabled(boolean enabled) {
-        Settings.Secure.putInt(mContext.getContentResolver(),
-                Settings.Secure.HARDWARE_KEYS_DISABLE,
-                enabled ? 0 : 1);
+        Settings.System.putInt(mContext.getContentResolver(),
+                Settings.System.ENABLE_HW_KEYS,
+                enabled ? 1 : 0);
+        try {
+            CMHardwareManager hardware = CMHardwareManager.getInstance(mContext);
+            hardware.set(CMHardwareManager.FEATURE_KEY_DISABLE, !enabled);
+        } catch (Exception ex){
+        }
     }
 
    private boolean isHWKeysEnabled() {
-        return Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.HARDWARE_KEYS_DISABLE, 0) == 0;
+        return Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.ENABLE_HW_KEYS, 1) != 0;
     }
 
     @Override
@@ -110,7 +115,7 @@ public class HWKeysTile extends QSTile<QSTile.BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.NITROGEN_SETTINGS;
+        return MetricsEvent.DEVICEINFO;
     }
 
     @Override

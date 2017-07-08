@@ -1783,6 +1783,12 @@ public final class Settings {
         }
 
         /**
+         * Enable HW keys
+         * @hide
+         */
+        public static final String ENABLE_HW_KEYS = "enable_hw_keys";
+
+        /**
          * The content:// style URL for this table
          */
         public static final Uri CONTENT_URI =
@@ -4829,6 +4835,12 @@ public final class Settings {
         @Deprecated
         public static final String DEVELOPMENT_SETTINGS_ENABLED =
                 Global.DEVELOPMENT_SETTINGS_ENABLED;
+
+	/**
+         * Disable hw buttons - actions, brightness, haptic feedback, overflow menu
+         * @hide
+         */
+        public static final String HARDWARE_KEYS_DISABLE = "hardware_keys_disable";
 
         /**
          * When the user has enable the option to have a "bug report" command
