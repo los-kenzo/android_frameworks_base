@@ -5446,6 +5446,7 @@ public class PackageParser {
         if (state.protectedComponents != null) {
             ai.protect = state.protectedComponents.size() > 0;
         }
+        ai.resourceDirs = state.resourceDirs;
     }
 
     public static ApplicationInfo generateApplicationInfo(Package p, int flags,

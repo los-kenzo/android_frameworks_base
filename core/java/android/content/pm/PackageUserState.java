@@ -86,6 +86,8 @@ public class PackageUserState {
                 ? new ArraySet<String>(o.protectedComponents) : null;
         visibleComponents = o.visibleComponents != null
                 ? new ArraySet<String>(o.visibleComponents) : null;
+        resourceDirs =
+            o.resourceDirs == null ? null : Arrays.copyOf(o.resourceDirs, o.resourceDirs.length);
     }
 
     /**

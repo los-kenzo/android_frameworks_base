@@ -812,6 +812,7 @@ final class Settings {
                                     false, // blockUninstall
                                     INTENT_FILTER_DOMAIN_VERIFICATION_STATUS_UNDEFINED, 0, null,
                                     null,
+                                    null,
                                     null
                                     );
                             writePackageRestrictionsLPr(user.id);
@@ -1616,6 +1617,7 @@ final class Settings {
                                 false, // blockUninstall
                                 INTENT_FILTER_DOMAIN_VERIFICATION_STATUS_UNDEFINED, 0, null,
                                 null,
+                                null,
                                 null
                                 );
                     }
@@ -1725,8 +1727,8 @@ final class Settings {
 
                     ps.setUserState(userId, ceDataInode, enabled, installed, stopped, notLaunched,
                             hidden, suspended, enabledCaller, enabledComponents, disabledComponents,
-                            blockUninstall, verifState, linkGeneration, null,
-                            protectedComponents, visibleComponents);
+                            blockUninstall, verifState, linkGeneration,
+                            protectedComponents, visibleComponents, null);
                 } else if (tagName.equals("preferred-activities")) {
                     readPreferredActivitiesLPw(parser, userId);
                 } else if (tagName.equals(TAG_PERSISTENT_PREFERRED_ACTIVITIES)) {
