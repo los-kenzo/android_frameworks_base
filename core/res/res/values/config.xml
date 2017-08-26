@@ -965,7 +965,7 @@
     <integer name="config_criticalBatteryWarningLevel">5</integer>
 
     <!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
-    <integer name="config_shutdownBatteryTemperature">680</integer>
+    <integer name="config_shutdownBatteryTemperature">550</integer>
 
     <!-- Display low battery warning when battery level dips to this value -->
     <integer name="config_lowBatteryWarningLevel">15</integer>
@@ -1169,8 +1169,8 @@
          brightness changes occur in response to an observed change in light level that exceeds the
          hysteresis threshold. -->
     <integer name="config_autoBrightnessBrighteningLightFastDebounce">500</integer>
-    <integer name="config_autoBrightnessBrighteningLightDebounce">4000</integer>
-    <integer name="config_autoBrightnessDarkeningLightDebounce">8000</integer>
+    <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">4000</integer>
 
     <!-- Initial light sensor event rate in milliseconds for automatic brightness control. This is
          used for obtaining the first light sample when the device stops dozing.
@@ -1946,7 +1946,7 @@
          This value may be zero in which case the screen will not dim before the
          device goes to sleep.
     -->
-    <integer name="config_maximumScreenDimDuration">7000</integer>
+    <integer name="config_maximumScreenDimDuration">10000</integer>
 
     <!-- User activity timeout: Maximum screen dim duration as a percentage of screen off timeout.
 
@@ -1972,7 +1972,7 @@
     <dimen name="config_viewMinFlingVelocity">50dp</dimen>
 
     <!-- Maximum velocity to initiate a fling, as measured in dips per second. -->
-    <dimen name="config_viewMaxFlingVelocity">8000dp</dimen>
+    <dimen name="config_viewMaxFlingVelocity">7000dp</dimen>
 
     <!-- Amount of time in ms the user needs to press the relevant key to bring up the global actions dialog -->
     <integer name="config_globalActionsKeyTimeout">500</integer>
@@ -2027,7 +2027,7 @@
     <!-- Safe headphone volume index. When music stream volume is below this index
     the SPL on headphone output is compliant to EN 60950 requirements for portable music
     players. -->
-    <integer name="config_safe_media_volume_index">10</integer>
+    <integer name="config_safe_media_volume_index">12</integer>
 
     <!-- Configure mobile network MTU. The standard default is set here but each carrier
          may have a specific value set in an overlay config.xml file. -->
@@ -2080,7 +2080,7 @@
     <bool name="config_useDevInputEventForAudioJack">false</bool>
 
     <!-- Whether safe headphone volume is enabled or not (country specific). -->
-    <bool name="config_safe_media_volume_enabled">true</bool>
+    <bool name="config_safe_media_volume_enabled">false</bool>
 
     <!-- Set to true if the wifi display supports compositing content stored
          in gralloc protected buffers.  For this to be true, there must exist

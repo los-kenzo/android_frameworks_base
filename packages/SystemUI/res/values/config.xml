@@ -112,7 +112,7 @@
 
     <!-- The tiles to display in QuickSettings in retail mode -->
     <string name="quick_settings_tiles_retail_mode" translatable="false">
-        cell,battery,dnd,flashlight,rotation,location
+        cell,battery,sound,flashlight,rotation,location,caffeine,heads_up,reboot,screenshot,adb_network
     </string>
 
     <!-- Whether or not the RSSI tile is capitalized or not. -->
@@ -139,10 +139,10 @@
     <integer name="heads_up_notification_minimum_time">2000</integer>
 
     <!-- milliseconds before the heads up notification accepts touches. -->
-    <integer name="touch_acceptance_delay">700</integer>
+    <integer name="touch_acceptance_delay">500</integer>
 
     <!-- The duration in seconds to wait before the dismiss buttons are shown. -->
-    <integer name="recents_task_bar_dismiss_delay_seconds">1000</integer>
+    <integer name="recents_task_bar_dismiss_delay_seconds">800</integer>
 
     <!-- The duration for animating the task decorations in after transitioning from an app. -->
     <integer name="recents_task_enter_from_app_duration">200</integer>
@@ -252,7 +252,7 @@
     <integer name="doze_small_icon_alpha">222</integer><!-- 87% of 0xff -->
 
     <!-- Hotspot tile: number of days to show after feature is used. -->
-    <integer name="days_to_show_hotspot_tile">30</integer>
+    <integer name="days_to_show_hotspot_tile">2</integer>
 
     <!-- Color inversion tile: number of days to show after feature is used. -->
     <integer name="days_to_show_color_inversion_tile">7</integer>
