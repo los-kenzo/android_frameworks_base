@@ -72,12 +72,7 @@ static void sqliteInitialize() {
 }
 
 static jint nativeReleaseMemory(JNIEnv* env, jclass clazz) {
-    jint rsize = 0, ret = 0;
-    do {
-        ret = sqlite3_release_memory(SOFT_HEAP_LIMIT);
-        rsize += ret;
-    } while (ret > 0);
-    return rsize;
+    return sqlite3_release_memory(SOFT_HEAP_LIMIT);
 }
 
 static const JNINativeMethod sMethods[] =
