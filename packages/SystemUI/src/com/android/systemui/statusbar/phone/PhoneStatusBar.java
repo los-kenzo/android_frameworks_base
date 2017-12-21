@@ -325,7 +325,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private static final String LOCKSCREEN_MEDIA_METADATA =
             "cmsecure:" + CMSettings.Secure.LOCKSCREEN_MEDIA_METADATA;
     private static final String SYSTEMUI_BURNIN_PROTECTION =
-            "cmsecure:" + CMSettings.System.SYSTEMUI_BURNIN_PROTECTION;
+            "cmsystem:" + CMSettings.System.SYSTEMUI_BURNIN_PROTECTION;
 
     static {
         boolean onlyCoreApps;
@@ -847,12 +847,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         addNavigationBar();
 
-        TunerService.get(mContext).addTunable(this,
-                SCREEN_BRIGHTNESS_MODE,
-                NAVBAR_LEFT_IN_LANDSCAPE,
-                STATUS_BAR_BRIGHTNESS_CONTROL,
-                LOCKSCREEN_MEDIA_METADATA);
-
         // Developer options - Force Navigation bar
         try {
             boolean needsNav = mWindowManagerService.needsNavigationBar();
@@ -863,6 +857,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         } catch (RemoteException ex) {
             // no window manager? good luck with that
         }
+
+        TunerService.get(mContext).addTunable(this,
+                SCREEN_BRIGHTNESS_MODE,
+                NAVBAR_LEFT_IN_LANDSCAPE,
+                STATUS_BAR_BRIGHTNESS_CONTROL,
+                LOCKSCREEN_MEDIA_METADATA,
+                SYSTEMUI_BURNIN_PROTECTION);
 
         // Lastly, call to the icon policy to install/update all the icons.
         mIconPolicy = new PhoneStatusBarPolicy(mContext, mIconController, mCastController,
