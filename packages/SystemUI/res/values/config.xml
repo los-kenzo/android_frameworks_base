@@ -90,21 +90,22 @@
     <bool name="quick_settings_wide">false</bool>
 
     <!-- The number of columns in the QuickSettings -->
-    <integer name="quick_settings_num_columns">3</integer>
+    <integer name="quick_settings_num_columns">4</integer>
 
     <!-- The number of rows in the QuickSettings -->
-    <integer name="quick_settings_num_rows">1</integer>
+    <integer name="quick_settings_num_rows">3</integer>
 
     <!-- The number of columns that the top level tiles span in the QuickSettings -->
     <integer name="quick_settings_user_time_settings_tile_span">1</integer>
 
     <!-- The default tiles to display in QuickSettings -->
     <string name="quick_settings_tiles_default" translatable="false">
-        wifi,cell,battery,dnd,flashlight,rotation,bt,airplane
+        wifi,cell,battery,sound,flashlight,rotation,bt,airplane,hwkeys,reboot,screenshotexpanded_desktop
     </string>
 
     <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->
-    <string name="quick_settings_tiles_stock" translatable="false">wifi,cell,battery,dnd,flashlight,rotation,bt,airplane,nfc,location,hotspot,inversion,saver,work,cast,night,adb_network,ambient_display,caffeine,heads_up,sync,usb_tether,volume_panel,profiles,livedisplay</string>
+     <string name="quick_settings_tiles_stock" translatable="false"> wifi,cell,battery,dnd,flashlight,rotation,bt,airplane,nfc,location,hotspot,inversion,saver,work,cast,night,adb_network,ambient_display,caffeine,heads_up,sync,usb_tether,volume_panel,hwkeys,reboot,expanded_desktop,sound,screenshot,livedisplay
+     </string>
 
     <!-- The tiles to display in QuickSettings -->
     <string name="quick_settings_tiles" translatable="false">default</string>
