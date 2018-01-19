@@ -496,7 +496,7 @@
     <integer translatable="false" name="config_wifi_framework_network_switch_rx_packet_threshold">20</integer>
 
     <!-- Integer indicating wpa_supplicant scan interval in milliseconds -->
-    <integer translatable="false" name="config_wifi_supplicant_scan_interval">15000</integer>
+    <integer translatable="false" name="config_wifi_supplicant_scan_interval">18000</integer>
 
     <!-- Integer indicating amount of time failed networks areblacklisted for the purpose
          of network switching in milliseconds -->
@@ -578,7 +578,7 @@
     <!-- XXXXXX END OF RESOURCES USING WRONG NAMING CONVENTION -->
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
-    <bool name="config_unplugTurnsOnScreen">false</bool>
+    <bool name="config_unplugTurnsOnScreen">true</bool>
 
     <!-- If this is true, the message that USB is only being used for charging will be shown. -->
     <bool name="config_usbChargingMessage">true</bool>
